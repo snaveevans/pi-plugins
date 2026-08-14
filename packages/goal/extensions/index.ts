@@ -74,7 +74,7 @@ export default function sessionGoal(pi: ExtensionAPI) {
 		},
 	});
 
-	pi.registerShortcut("ctrl+shift+g", {
+	pi.registerShortcut("ctrl+alt+g", {
 		description: "Clear the session goal",
 		handler: async (ctx) => {
 			announce(ctx, controller.clear(ctx));

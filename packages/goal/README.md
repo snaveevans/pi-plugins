@@ -33,7 +33,7 @@ pi -e /absolute/path/to/pi-plugins/packages/goal/extensions/index.ts
 | `/goal all tests in test/auth pass` | Set the condition and start a turn |
 | `/goal` | Status (active, or last achieved/failed) |
 | `/goal clear` | Clear (`stop`, `off`, `reset`, `none`, `cancel` work too) |
-| `Ctrl+Shift+G` | Same as `/goal clear` |
+| `Ctrl+Alt+G` | Same as `/goal clear` |
 
 One goal per session. Setting a new one replaces the current one.
 
