@@ -1,0 +1,11 @@
+{
+  "name": "pi-plugins",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pi packages: session agents and other extensions, installable from this repo.",
+  "keywords": ["pi-package"],
+  "license": "MIT",
+  "pi": {
+    "extensions": ["./packages/agents/extensions"]
+  }
+}
