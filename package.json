@@ -6,6 +6,7 @@
   "keywords": ["pi-package"],
   "license": "MIT",
   "pi": {
-    "extensions": ["./packages/agents/extensions", "./packages/loop/extensions"]
+    "extensions": ["./packages/agents/extensions", "./packages/loop/extensions"],
+    "skills": ["./packages/agents/skills"]
   }
 }

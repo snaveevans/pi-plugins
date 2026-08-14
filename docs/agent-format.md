@@ -2,6 +2,8 @@
 
 Session agents are Markdown files with optional YAML frontmatter. The body is the identity: who this session is.
 
+The agents package ships a `create-agent` skill so an installed Pi session can write these files on request.
+
 This is the intersection that OpenCode, Claude Code, and GitHub Copilot already agree on. Extra frontmatter those tools use (`tools`, `permission`, `mode`, `model`, `handoffs`, `mcp-servers`, …) is **ignored** here. We do not lock tools or spawn a subprocess.
 
 ## File
