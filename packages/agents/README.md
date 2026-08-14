@@ -31,12 +31,12 @@ pi -e /absolute/path/to/pi-plugins/packages/agents/extensions/index.ts
 | | |
 | --- | --- |
 | `/agent` | Picker |
-| `/agent test-engineer` | Switch now |
+| `/agent reviewer` | Switch now (name of a file you added) |
 | `/agent none` | Drop the hat (`off` and `clear` work too) |
 | `Ctrl+Shift+A` | Cycle none → each agent → none |
-| `pi --agent test-engineer` | Start already in character |
+| `pi --agent reviewer` | Start already in character |
 
-The footer shows `agent:test-engineer` while one is active.
+The footer shows `agent:<name>` while one is active.
 
 `--agent` wins over whatever the session last saved. Resume without the flag restores the saved agent.
 
@@ -46,13 +46,11 @@ The footer shows `agent:test-engineer` while one is active.
 - **Session file** — last chosen name stored as a custom entry
 - **Footer** — `agent:<name>`
 
-What does **not** change in v1: tools, model, thinking level, earlier turns. Old implementer chatter stays in the transcript; the *next* call is the test engineer looking at it.
+What does **not** change in v1: tools, model, thinking level, earlier turns. Old implementer chatter stays in the transcript; the *next* call wears the new hat.
 
 ## Files
 
-Shipped example: [`agents/test-engineer.md`](agents/test-engineer.md).
-
-Add your own in any discovery path (see [agent format](../../docs/agent-format.md)). Highest layer for a given `name` wins. Unknown frontmatter is ignored so Claude / OpenCode / Copilot files load as-is.
+This package ships no agents. Add your own in any discovery path (see [agent format](../../docs/agent-format.md)). Highest layer for a given `name` wins. Unknown frontmatter is ignored so Claude / OpenCode / Copilot files load as-is.
 
 ## Not this package
 

@@ -36,7 +36,6 @@ pi-plugins/
   packages/
     agents/
       extensions/              ← Pi loads index.ts only
-      agents/test-engineer.md  ← shipped default
     loop/
       extensions/              ← /loop
 ```

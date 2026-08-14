@@ -8,14 +8,13 @@ This is the intersection that OpenCode, Claude Code, and GitHub Copilot already 
 
 ```markdown
 ---
-name: test-engineer
-description: Acceptance-criteria auditor. Use when writing a test plan or checking coverage.
+name: reviewer
+description: Code reviewer. Use when reading a diff or deciding whether a change is ready.
 ---
 
-You ARE the test engineer for this session.
+You ARE the reviewer for this session.
 Do not write product code unless asked.
-Do not invent product policy.
-Source of truth is the spec's Observable Contract.
+Do not invent product policy. If the spec is silent, say so.
 ```
 
 | Piece | Rule |
@@ -33,7 +32,7 @@ Same `name`: the highest layer wins. Inside a layer, later paths in the lists be
 
 **Lowest → highest**
 
-1. Package defaults — `packages/agents/agents/*.md` in this repo
+1. Package defaults — `packages/agents/agents/*.md` if you add any (this plugin ships none)
 2. User vendor
    - `~/.agents/agents/` (this plugin's vendor-neutral dump; not an industry default)
    - `~/.copilot/agents/`
@@ -66,8 +65,8 @@ Directories are scanned recursively. Not in a git repo: only `cwd` is treated as
 Write the intersection format. Copy or symlink into the other tool's directory if you want it to load natively.
 
 - OpenCode primary (Tab-switch this session): add `mode: primary` in **their** copy if they require it. We ignore `mode`.
-- Claude main session: `claude --agent test-engineer`. We do not spawn Claude.
-- Copilot: `.github/agents/test-engineer.md` or `test-engineer.agent.md`.
+- Claude main session: `claude --agent reviewer`. We do not spawn Claude.
+- Copilot: `.github/agents/reviewer.md` or `reviewer.agent.md`.
 
 Do not add `tools` / `permission` for our sake. We will not enforce them.
 

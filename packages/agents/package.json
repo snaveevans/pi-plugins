@@ -2,6 +2,7 @@
   "name": "pi-session-agents",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Switch the current Pi session into a named agent. Identity lives on the system prompt so compaction cannot eat it.",
   "keywords": ["pi-package"],
   "license": "MIT",
