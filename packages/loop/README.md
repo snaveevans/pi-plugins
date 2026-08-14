@@ -83,5 +83,6 @@ State is a custom session entry. Resume (`pi -c`) restores an unexpired loop and
 
 - Multiple concurrent jobs / cron expressions / one-shot wall-clock reminders
 - Claude dynamic interval ("you pick the wait") or Monitor
+- Condition-driven continuation — that is [`/goal`](../goal/README.md)
 - Firing after you quit Pi
 - Catch-up for every missed beat
