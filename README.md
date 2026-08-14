@@ -19,6 +19,7 @@ pi install /absolute/path/to/pi-plugins/packages/agents
 | Package | What it does |
 | --- | --- |
 | [`packages/agents`](packages/agents/README.md) | `/agent` — this session *is* the named agent. Identity on the system prompt so compaction cannot eat it. |
+| [`packages/loop`](packages/loop/README.md) | `/loop` — re-run a prompt in this session on an interval. Process must stay open. |
 
 Session agent files (markdown + YAML + body) are documented in [`docs/agent-format.md`](docs/agent-format.md).
 
@@ -30,10 +31,12 @@ No publish step. Git (or a local path) is the install. Root `package.json` has n
 
 ```text
 pi-plugins/
-  package.json                 ← pi.extensions → packages/agents/extensions
+  package.json                 ← pi.extensions → packages/*/extensions
   docs/agent-format.md
   packages/
     agents/
       extensions/              ← Pi loads index.ts only
       agents/test-engineer.md  ← shipped default
+    loop/
+      extensions/              ← /loop
 ```

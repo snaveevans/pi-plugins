@@ -10,6 +10,7 @@ A monorepo of **Pi packages**. Git install loads the **repo root** (`package.jso
 
 - How to install / what is in the tree → [`README.md`](README.md)
 - Session agent plugin → [`packages/agents/README.md`](packages/agents/README.md)
+- Session loop plugin → [`packages/loop/README.md`](packages/loop/README.md)
 - Portable agent markdown (intersection with Claude / OpenCode / Copilot) → [`docs/agent-format.md`](docs/agent-format.md)
 
 ## Working rules
