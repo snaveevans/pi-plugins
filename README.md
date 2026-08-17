@@ -16,11 +16,12 @@ pi install /absolute/path/to/pi-plugins/packages/agents
 
 ## Packages
 
-| Package | What it does |
-| --- | --- |
-| [`packages/agents`](packages/agents/README.md) | `/agent` — this session *is* the named agent. Identity on the system prompt so compaction cannot eat it. Ships a `create-agent` skill so you can ask the model to write one. |
-| [`packages/loop`](packages/loop/README.md) | `/loop` — re-run a prompt in this session on an interval. Process must stay open. |
-| [`packages/goal`](packages/goal/README.md) | `/goal` — keep working toward a completion condition. Process must stay open. |
+| Package                                        | What it does                                                                                                                                                                 |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`packages/agents`](packages/agents/README.md) | `/agent` — this session _is_ the named agent. Identity on the system prompt so compaction cannot eat it. Ships a `create-agent` skill so you can ask the model to write one. |
+| [`packages/loop`](packages/loop/README.md)     | `/loop` — re-run a prompt in this session on an interval. Process must stay open.                                                                                            |
+| [`packages/goal`](packages/goal/README.md)     | `/goal` — keep working toward a completion condition. Process must stay open.                                                                                                |
+| [`packages/init`](packages/init/README.md)     | `/init` — create or audit AGENTS.md from grounded repo facts.                                                                                                               |
 
 Session agent files (markdown + YAML + body) are documented in [`docs/agent-format.md`](docs/agent-format.md).
 
@@ -42,4 +43,6 @@ pi-plugins/
       extensions/              ← /loop
     goal/
       extensions/              ← /goal
+    init/
+      extensions/              ← /init
 ```
