@@ -5,7 +5,7 @@ Pi packages. One git repo, one `pi install`. Layout is for us; Pi treats the **r
 ```bash
 pi install /absolute/path/to/pi-plugins
 # after this is on GitHub:
-pi install git:github.com/<you>/pi-plugins
+pi install git:github.com/snaveevans/pi-plugins
 ```
 
 Pi clones (or links) the root, then loads whatever the root `package.json` `pi` key lists. There is no `git:…/packages/agents` syntax. To load only one package while developing:
