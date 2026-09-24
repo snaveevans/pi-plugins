@@ -5,8 +5,23 @@
   "description": "Pi packages: session agents and other extensions, installable from this repo.",
   "keywords": ["pi-package"],
   "license": "MIT",
+  "dependencies": {
+    "puppeteer-core": "^25.12.0"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": ">=0.83.0 <0.88.0",
+    "@earendil-works/pi-coding-agent": ">=0.83.0 <0.88.0",
+    "@earendil-works/pi-tui": ">=0.83.0 <0.88.0",
+    "typebox": "^1.3.11"
+  },
   "pi": {
-    "extensions": ["./packages/agents/extensions", "./packages/loop/extensions", "./packages/goal/extensions", "./packages/init/extensions"],
-    "skills": ["./packages/agents/skills"]
+    "extensions": [
+      "./packages/agents/extensions",
+      "./packages/loop/extensions",
+      "./packages/goal/extensions/index.ts",
+      "./packages/init/extensions",
+      "./packages/custom/extensions/index.ts"
+    ],
+    "skills": ["./packages/agents/skills", "./packages/custom/skills"]
   }
 }

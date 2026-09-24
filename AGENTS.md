@@ -14,6 +14,7 @@ A monorepo of **Pi packages**. Git install loads the **repo root** (`package.jso
 - Session loop plugin → [`packages/loop/README.md`](packages/loop/README.md)
 - Session goal plugin → [`packages/goal/README.md`](packages/goal/README.md)
 - Session init plugin → [`packages/init/README.md`](packages/init/README.md)
+- Personal extensions, Brave skill, and keybindings template → [`packages/custom/README.md`](packages/custom/README.md)
 - Portable agent markdown (intersection with Claude / OpenCode / Copilot) → [`docs/agent-format.md`](docs/agent-format.md)
 
 ## Working rules
