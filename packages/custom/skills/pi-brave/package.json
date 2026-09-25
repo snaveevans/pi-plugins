@@ -1,0 +1,9 @@
+{
+  "name": "pi-brave",
+  "private": true,
+  "type": "module",
+  "description": "Dedicated Brave session for Pi, driven over the local Chrome DevTools Protocol.",
+  "dependencies": {
+    "puppeteer-core": "^25.12.0"
+  }
+}
