@@ -22,6 +22,7 @@ function selectionFromEntry(data: unknown): Selection | undefined {
 
 export default function (pi: ExtensionAPI) {
 	let selection: Selection = "272k";
+	let switchQueue: Promise<void> = Promise.resolve();
 
 	async function apply(ctx: ExtensionContext): Promise<boolean> {
 		const original = catalogModel(ctx);
@@ -43,6 +44,43 @@ export default function (pi: ExtensionAPI) {
 		if (selection === "1m" && event.model === ctx.model) await apply(ctx);
 	});
 
+	async function choose(choice: Selection, ctx: ExtensionContext): Promise<void> {
+		if (!catalogModel(ctx)) {
+			ctx.ui.notify("This OpenAI model does not have a 272k catalog window; no change made.", "error");
+			return;
+		}
+		const previous = selection;
+		selection = choice;
+		try {
+			if (!await apply(ctx)) {
+				selection = previous;
+				ctx.ui.notify("OpenAI authentication unavailable; no change made.", "error");
+				return;
+			}
+		} catch (error) {
+			selection = previous;
+			const message = error instanceof Error ? error.message : String(error);
+			ctx.ui.notify(`Could not switch context: ${message}`, "error");
+			return;
+		}
+		pi.appendEntry(ENTRY_TYPE, { selection });
+		ctx.ui.notify(`OpenAI context set to ${choice} (${WINDOWS[choice]} tokens) for this session.`, "info");
+	}
+
+	function queueChoice(requested: Selection | "toggle", ctx: ExtensionContext): Promise<void> {
+		const result = switchQueue.then(() => {
+			const choice = requested === "toggle" ? (selection === "272k" ? "1m" : "272k") : requested;
+			return choose(choice, ctx);
+		});
+		switchQueue = result.catch(() => {});
+		return result;
+	}
+
+	pi.registerShortcut("shift+tab", {
+		description: "Toggle the OpenAI context window between 272k and 1m",
+		handler: (ctx) => queueChoice("toggle", ctx),
+	});
+
 	pi.registerCommand("openai-context", {
 		description: "Choose the OpenAI context window: 272k or 1m (session only)",
 		getArgumentCompletions: (prefix) => Object.keys(WINDOWS)
@@ -59,26 +97,7 @@ export default function (pi: ExtensionAPI) {
 				ctx.ui.notify("Choose 272k or 1m: /openai-context 272k|1m", "error");
 				return;
 			}
-			if (!catalogModel(ctx)) {
-				ctx.ui.notify("This OpenAI model does not have a 272k catalog window; no change made.", "error");
-				return;
-			}
-			const previous = selection;
-			selection = choice;
-			try {
-				if (!await apply(ctx)) {
-					selection = previous;
-					ctx.ui.notify("OpenAI authentication unavailable; no change made.", "error");
-					return;
-				}
-			} catch (error) {
-				selection = previous;
-				const message = error instanceof Error ? error.message : String(error);
-				ctx.ui.notify(`Could not switch context: ${message}`, "error");
-				return;
-			}
-			pi.appendEntry(ENTRY_TYPE, { selection });
-			ctx.ui.notify(`OpenAI context set to ${choice} (${WINDOWS[choice]} tokens) for this session.`, "info");
+			await queueChoice(choice, ctx);
 		},
 	});
 }
